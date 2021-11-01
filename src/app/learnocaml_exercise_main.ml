@@ -287,6 +287,9 @@ let () =
         typecheck true
   end ;
   Window.onunload (fun _ev -> local_save ace id; true);
+  (* ----- activate bridge for the xtool corrresponding to the exercise ----- *)
+  Learnocaml_bridge.AceMixin.setAce ace;
+  Learnocaml_bridge.BridgeRegistry.selectAndRun (Learnocaml_exercise.(decipher File.solution exo));
   (* ---- return -------------------------------------------------------- *)
   toplevel_launch >>= fun _ ->
   typecheck false >>= fun () ->

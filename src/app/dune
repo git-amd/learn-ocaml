@@ -1,14 +1,18 @@
 (library
  (name learnocaml_app_common)
  (wrapped false)
- (flags :standard -warn-error -9-27-32)
+ (flags :standard -linkall -warn-error -9-27-32)
  (modules Learnocaml_local_storage
           Learnocaml_config
+          Learnocaml_bridge
+          Learnocaml_bridge_oflat
           Server_caller
           Learnocaml_common)
  (preprocess
   (per_module ((pps js_of_ocaml-ppx)
                Learnocaml_config
+               Learnocaml_bridge
+               Learnocaml_bridge_oflat
                Learnocaml_local_storage
                Server_caller)
               ((pps ppx_ocplib_i18n js_of_ocaml-ppx)
