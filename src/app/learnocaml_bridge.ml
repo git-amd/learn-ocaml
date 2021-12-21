@@ -398,6 +398,8 @@ module AceMixin : sig	(* Supply Ace functionality to the bridges needing it *)
 end
 =
 struct
+    open Js_of_ocaml
+
 	type aceType = Ocaml_mode.editor Ace.editor
 
 	let aceRef: aceType option ref =
