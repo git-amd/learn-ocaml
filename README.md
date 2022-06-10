@@ -1,84 +1,73 @@
-Learn-OCaml
-===========
+# Learn-OCaml/OFLAT integration - supporting FLAT concepts on Learn-OCaml
 
-This is Learn-OCaml, a platform for learning the OCaml language,
-featuring a Web toplevel, an exercise environment, and a directory of
-lessons and tutorials.
 
-A demo is available [online](https://ocaml-sf.org/learn-ocaml-public/).
+## About this Learn-OCaml branch
 
-[![CI](https://github.com/ocaml-sf/learn-ocaml/workflows/CI/badge.svg?branch=master)](https://github.com/ocaml-sf/learn-ocaml/actions?query=workflow%3ACI)
-[![macOS](https://github.com/ocaml-sf/learn-ocaml/workflows/macOS/badge.svg?branch=master)](https://github.com/ocaml-sf/learn-ocaml/actions?query=workflow%3AmacOS)
-[![learn-ocaml](https://img.shields.io/badge/docker-ocamlsf%2Flearn--ocaml-blue.svg)](https://hub.docker.com/r/ocamlsf/learn-ocaml "Docker image of learn-ocaml")
-[![learn-ocaml-client](https://img.shields.io/badge/docker-ocamlsf%2Flearn--ocaml--client-blue.svg)](https://hub.docker.com/r/ocamlsf/learn-ocaml-client "Docker image of learn-ocaml-client")
+This is a Learn-OCaml branch the implements an experimental new feature: support to FLAT concepts on Learn-OCaml.
 
-Howtos
-------
 
-* [How to set up an environment to develop exercises?](https://github.com/ocaml-sf/learn-ocaml/blob/master/docs/howto-setup-exercise-development-environment.md)
-* [How to write exercises?](https://github.com/ocaml-sf/learn-ocaml/blob/master/docs/howto-write-exercises.md)
-* [How to submit an exercise to the global corpus?](https://github.com/ocaml-sf/learn-ocaml/blob/master/docs/howto-submit-an-exercise.md)
-* [How to deploy an instance of Learn OCaml?](https://github.com/ocaml-sf/learn-ocaml/blob/master/docs/howto-deploy-a-learn-ocaml-instance.md)
-* [How to deploy Learn-OCaml statically?](https://github.com/ocaml-sf/learn-ocaml/blob/master/docs/howto-deploy-learn-ocaml-statically.md)
-* [How to practice OCaml with Learn-OCaml?](https://github.com/ocaml-sf/learn-ocaml/blob/master/docs/howto-practice-ocaml.md)
 
-Contacts
---------
 
-To ask any question about how to use Learn-OCaml, subscribe to
-the mailing-list [learn-ocaml-club](https://sympa.inria.fr/sympa/subscribe/learn-ocaml-club).
+## First definitions:
 
-To discuss about the development of Learn-OCaml, subscribe to
-the mailing-list [learn-ocaml-dev](https://sympa.inria.fr/sympa/subscribe/learn-ocaml-dev).
+**Learn-OCaml** - is a Web platform for learning the OCaml language, featuring a toplevel and an environment with exercises, lessons and tutorials. [Project: https://gitlab.com/releaselab/leaf/OCamlFlat]
 
-License and copyright
----------------------
+**OCamlFLAT** - is a OCaml library  with functions for several FLAT concept, e.g. testing acceptance, generating words; it also contains a basic text based environment supporting a toplevel and exercises. [Project: https://gitlab.com/releaselab/leaf/OCamlFlat].
 
-Unless explicitly written below or in the files themselves, the source
-code for the app, images, static files, course content and exercises
-are placed under the MIT license.
+**OFLAT** - is a purely client-side web-application that provides a graphical user interface to the OCamlFLAT library. [Project: https://gitlab.com/releaselab/leaf/OFLAT].
 
-Lightly modified third party components ACE and ppx_metaquot are
-included, under their original licenses (respectively BSD and MIT).
+**Learn-OCaml/OFLAT integration** - this software solution for supporting FLAT concepts on Learn-OCaml.
 
-The OCamlPro logo images are (c) OCamlPro. Redistribution is
-permitted, alteration requires prior written authorization by
-OCamlPro.
 
-The OCaml / ocaml.org logo is released under the very liberal UNLICENSE.
-See (https://github.com/ocaml/ocaml.org/blob/master/LICENSE.md).
 
-The Inconsolata font is released under the Open Font License.
-See (http://www.levien.com/type/myfonts/inconsolata.html).
 
-The Biolinum font is licensed under the GNU General Public License with
-a the 'Font-Exception'.
-See (http://www.linuxlibertine.org).
 
-The public instance of Learn OCaml uses the Fontin font instead of
-Biolinum. This font is licensed under the exljbris Font Foundry Free
-Font License Agreement, which, to our understanding, does not allow us
-to redistribute it. See (http://www.exljbris.com/eula.html). You will
-optionally have to procure the files by yourself while building the
-app. If not, the CSS provides a reasonable fallback font.
 
-Contributions to this repository are placed under the MIT
-license. This means that we can merge them with the same license as
-the rest of the codebase, while you keep all the rights on your code.
-And we will not have to bother you with any future license update.
-See (https://opensource.org/licenses/MIT).
 
-Authors and Acknowledgements
-----------------------------
 
-Learn-OCaml is a free software by the [OCaml Software Foundation](https://ocaml-sf.org).
+## The Learn-OCaml/OFLAT integration consists in three parts:
 
- * The main authors are Benjamin Canou, Çağdaş Bozman and Grégoire Henry.
+### Part 1 - Implementation of text-based FLAT exercises in Learn-OCaml
 
- * It builds on the previous experience of Try OCaml by Çağdaş Bozman.
+- The implementation uses translation of exercises from the OCamlFLAT format to the Learn-OCaml format. The translator is implemented on the OCamlFLAT library, mostly inside the module "LearnOCaml.ml".
 
- * We heavily use js_of_ocaml, so thanks to the Ocsigen team.
+- The translated exercises are expressed using what is already available in Learn-OCaml. So, no change to the Learn-OCaml core was required for this feature. The expected student's solution for each translated exercise requires OCaml syntax.
 
- * The text editing component is a customized version of ACE.
+- For each FLAT exercise, the translator generates a Learn-OCaml exercise directory containing all standard files: "descr.html", "prelude.ml", "solution.ml", "test.ml", "meta.json", "prepare.ml", "template.ml". As of now, the file "prepare.ml" contains the code of the entire OCamlFLAT library.
 
- * We also include a derivative of ppx_metaquot by Alain Frisch.
+- In the current OCamlFLAT exercice format, the required student's answer is always a FLAT model. The student is asked to develop a FLAT model (for some informally or mathematically described language) or to convert between different kins of models. The exercise can impose further requisites like the requirement of the model to be deterministic or minimal, for example. The student's answer is validated using unit tests, followed by the direct checking of the extra requirements.
+
+- The current exercise format caters for most frequent needs of the teacher, but some more exercise formats are in the works.
+
+- Supporting this kind of text-based FLAT exercises does not require the use of the bridging facility.
+
+
+### Part 2 - Bridging Learn-OCaml to external tools
+
+- This branck adds a new bridge functionality on Learn-OCaml, the supports bidirectional communication with domain-specific external tools, such as OFLAT, that is specialized on FLAT concepts. The two sides of the bridge can transparently share and synchronize on what the student has done.
+
+- The appropriate external tool is automatically selected and launched, according to some signature that occurs in the exercise specification. In the case of OFLAT, the signature is the specific comment "**(* OFLAT exercise *)**" occurring inside the file "solution.ml".
+
+- The implementation uses the BroadcastChannel API. Therefore, the code of the external tool must reside in the same domain of the Learn-OCaml installation, as required by the same-origin policy. The external tools reside in the folder 'learn-ocaml/xtools', located at the root of the Learn-OCaml installation.
+
+- The implementation of the bridge on the Learn-OCaml side is written in OCaml and mainly resides in the new source file "src/app/learnocaml_bridge.ml". Furthermore, some changes were required to the files "src/app/learnocaml_exercise_main.ml" and "src/app/dune".
+
+- The implementation of the bridge on the  external tool side is currently written in JavaScript and resides in the module "OFLAT/XBridge.js".
+
+
+### Part 3 - Bridge between Learn-OCaml and OFLAT, 
+
+- When the user opens a FLAT exercise in LearnOCaml, OFLAT becomes automatically available as an external tool.
+
+- The user interface of each side contains a button allowing the user to send data to the other side. For instance, the student defines a finite automaton on the graphical application and checks it on Learn-OCaml, and vice-versa.
+
+
+
+## How to install
+
+#### TODO
+
+## Authors and Acknowledgements
+
+
+#### TODO
