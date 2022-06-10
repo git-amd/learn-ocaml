@@ -3,12 +3,12 @@
 
 ## About this Learn-OCaml branch
 
-This is a Learn-OCaml branch the implements an experimental new feature: support to FLAT concepts on Learn-OCaml.
+This is a Learn-OCaml branch that implements an experimental new feature: **the support of FLAT concepts on Learn-OCaml**. This is done in two ways: **(1)** adding support for text-based FLAT exercises inside Learn-OCaml; **(2)** connecting to a domain-specific external tool.
 
 
 
 
-## First definitions:
+## Software elements
 
 **Learn-OCaml** - is a Web platform for learning the OCaml language, featuring a toplevel and an environment with exercises, lessons and tutorials. [Project: https://gitlab.com/releaselab/leaf/OCamlFlat]
 
@@ -25,9 +25,9 @@ This is a Learn-OCaml branch the implements an experimental new feature: support
 
 
 
-## The Learn-OCaml/OFLAT integration consists in three parts:
+## Supporting FLAT concepts on Learn-OCaml
 
-### Part 1 - Implementation of text-based FLAT exercises in Learn-OCaml
+### Part 1 - Text-based FLAT exercises in Learn-OCaml
 
 - The implementation uses translation of exercises from the OCamlFLAT format to the Learn-OCaml format. The translator is implemented on the OCamlFLAT library, mostly inside the module "LearnOCaml.ml".
 
