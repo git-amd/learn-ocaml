@@ -3,7 +3,7 @@
 
 ## About this Learn-OCaml branch
 
-This is a Learn-OCaml branch that implements an experimental new feature: **supporting FLAT concepts on Learn-OCaml**. This is done in two ways: **(1)** supporting text-based FLAT exercises inside Learn-OCaml; **(2)** supporting the connection to a domain-specific external graphical tool.
+This is a Learn-OCaml branch that implements an experimental new feature: **supporting FLAT concepts on Learn-OCaml**. This is done in two ways: **(1)** supporting text-based FLAT exercises inside Learn-OCaml; **(2)** supporting the interconnection with a domain-specific external graphical tool.
 
 
 
@@ -27,6 +27,8 @@ This is a Learn-OCaml branch that implements an experimental new feature: **supp
 
 ## Supporting FLAT concepts on Learn-OCaml
 
+This work is better explained in three parts.
+
 ### Part 1 - Text-based FLAT exercises in Learn-OCaml
 
 - The implementation uses translation of exercises from the OCamlFLAT format to the Learn-OCaml format. The translator is implemented on the OCamlFLAT library, mostly inside the module "LearnOCaml.ml".
@@ -44,9 +46,9 @@ This is a Learn-OCaml branch that implements an experimental new feature: **supp
 
 ### Part 2 - Bridging Learn-OCaml to external tools
 
-- This branck adds a new bridge functionality on Learn-OCaml, the supports bidirectional communication with domain-specific external tools, such as OFLAT, that is specialized on FLAT concepts and supports interactive graphics. The two sides of the bridge can transparently share and synchronize on what the student has done.
+- This branch adds a new bridge functionality on Learn-OCaml, that supports bidirectional communication with domain-specific external tools, such as OFLAT. The two sides of the bridge can transparently share and synchronize on what the student has done.
 
-- The appropriate external tool is automatically selected and launched, according to some signature that occurs in the exercise specification. In the case of OFLAT, the signature is the specific comment "**(* OFLAT exercise *)**" occurring inside the file "solution.ml".
+- The appropriate external tool is automatically selected and launched, according to some signature that occurs in the exercise specification. In the case of OFLAT, the signature is this specific comment "**(* OFLAT exercise *)**" occurring inside the file "solution.ml".
 
 - The implementation uses the BroadcastChannel API. Therefore, the code of the external tool must reside in the same domain of the Learn-OCaml installation, as required by the same-origin policy. The external tools reside in the folder 'learn-ocaml/xtools', located at the root of the Learn-OCaml installation.
 
