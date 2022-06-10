@@ -3,7 +3,7 @@
 
 ## About this Learn-OCaml branch
 
-This is a Learn-OCaml branch that implements an experimental new feature: **supporting FLAT concepts on Learn-OCaml**. This is done in two ways: **(1)** supporting text-based FLAT exercises inside Learn-OCaml; **(2)** connecting to a domain-specific external tool supporting interactive graphics.
+This is a Learn-OCaml branch that implements an experimental new feature: **supporting FLAT concepts on Learn-OCaml**. This is done in two ways: **(1)** supporting text-based FLAT exercises inside Learn-OCaml; **(2)** supporting the connection to a domain-specific external graphical tool.
 
 
 
