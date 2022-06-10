@@ -8,7 +8,7 @@ This is a Learn-OCaml branch that implements an experimental new feature: **supp
 
 
 
-## Software Pieces
+## Software pieces
 
 **Learn-OCaml** - is a Web platform for learning the OCaml language, featuring a toplevel and an environment with exercises, lessons and tutorials. [Project: https://gitlab.com/releaselab/leaf/OCamlFlat]
 
