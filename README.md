@@ -8,7 +8,7 @@ This is a Learn-OCaml branch that implements an experimental new feature: **the 
 
 
 
-## Software elements
+## Software Pieces
 
 **Learn-OCaml** - is a Web platform for learning the OCaml language, featuring a toplevel and an environment with exercises, lessons and tutorials. [Project: https://gitlab.com/releaselab/leaf/OCamlFlat]
 
@@ -16,7 +16,7 @@ This is a Learn-OCaml branch that implements an experimental new feature: **the 
 
 **OFLAT** - is a purely client-side web-application that provides a graphical user interface to the OCamlFLAT library. [Project: https://gitlab.com/releaselab/leaf/OFLAT].
 
-**Learn-OCaml/OFLAT integration** - this software solution for supporting FLAT concepts on Learn-OCaml.
+**Learn-OCaml/OFLAT integration** - this software solution, supporting FLAT concepts on Learn-OCaml.
 
 
 
